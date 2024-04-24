@@ -3,8 +3,7 @@ const slackRoutes = require("./slack");
 
 const routes = express.Router();
 routes.get('/', (req, res) => {
-
-  res.send();
+  res.send({ message: 'hello' });
 })
 routes.use("/slack", slackRoutes);
 

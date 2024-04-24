@@ -1,9 +1,9 @@
 // src/routes/slack.js
 const express = require("express");
-const { hello } = require("../controllers/slack");
+const { handle } = require("../controllers/slack");
 
 const routes = express.Router();
 
-routes.post("/hello", hello);
+routes.post("/", handle);
 
 module.exports = routes;

@@ -5,7 +5,20 @@ const web = new WebClient(BOT_USER_TOKEN);
 
 class SlackService {
   postTextMessage(messageArguments) {
-    web.chat.postMessage(messageArguments);
+    return web.chat.postMessage({ ...messageArguments });
+  }
+  async postFile() {
+    const webAPICallResult = await web.files.uploadV2({
+      channel_id: 'D07080HJGJX',
+      file: 'package.json',
+      filename: 'package.json',
+    });
+    if (webAPICallResult.ok) {
+      
+      const file = webAPICallResult.files[0];
+      return file.permalink;
+    }
+    return null;
   }
 }
 
